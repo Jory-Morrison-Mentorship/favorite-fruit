@@ -31,7 +31,7 @@ def processes(favorite):
                 if (favorite.endswith(suffix5) is True):
                         print("path2")
                         favorite = favorite.replace(favorite, favorite + suffix3)
-                if (favorite.endswith(suffix2) is False):
+                if (favorite.endswith(suffix1) is False):
                         print("path3")
                         favorite = favorite.replace(favorite, favorite + suffix1)
 
