@@ -5,11 +5,7 @@ fruits = [fruit.lower() for fruit in fruits]
 #Variables
 decided = False
 favorite = fruits[0]
-suffix1 = "s"
-suffix2 = "ies"
-suffix3 = "es"
-suffix4 = "y"
-suffix5 = "o"
+suffixes = ["s", "ies", "es", "y", "o"]
 
 #Function that asks questions and allows input. It figures out your favorite fruit
 def processes(favorite):
@@ -25,15 +21,15 @@ def processes(favorite):
                         return decided
 
                 #Code that makes plurality irrelevant
-                if (favorite.endswith(suffix4) is True):
+                if (favorite.endswith(suffixes[3]) is True):
                         print("path1")
-                        favorite = favorite.replace(suffix4, suffix2)
-                if (favorite.endswith(suffix5) is True):
+                        favorite = favorite.replace(suffixes[3], suffixes[1])
+                if (favorite.endswith(suffixes[4]) is True):
                         print("path2")
-                        favorite = favorite.replace(favorite, favorite + suffix3)
-                if (favorite.endswith(suffix1) is False):
+                        favorite = favorite.replace(favorite, favorite + suffixes[2])
+                if (favorite.endswith(suffixes[0]) is False):
                         print("path3")
-                        favorite = favorite.replace(favorite, favorite + suffix1)
+                        favorite = favorite.replace(favorite, favorite + suffixes[0])
 
 #Sets decided equal to the returned value, which is "decided?"
 decided = processes(favorite)
