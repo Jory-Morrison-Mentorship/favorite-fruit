@@ -23,7 +23,7 @@ def processes(favorite):
                 #Code that makes plurality irrelevant
                 if (favorite.endswith(suffixes[3]) is True):
                         print("path1")
-                        favorite = favorite.replace(suffixes[3], suffixes[1])
+                        favorite = favorite[:-1] + suffixes[1]
                 if (favorite.endswith(suffixes[4]) is True):
                         print("path2")
                         favorite = favorite.replace(favorite, favorite + suffixes[2])
