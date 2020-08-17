@@ -35,7 +35,7 @@ def compareFruits(currentFruit, nextFruit, userInput):
 
   else:
     print("Unable to match")
-    exit
+    exit()
 
 decided = False
 favorite = fruits[0] # we assume the first fruit as a favorite
