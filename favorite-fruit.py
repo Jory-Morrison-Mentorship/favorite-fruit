@@ -1,41 +1,63 @@
-#List of Fruits
-fruits = ['Gooseberries', 'Grapes', 'Oranges', 'Tomatoes', 'Raspberries', 'Strawberries', 'Kiwis', 'Mangoes']
-fruits = [fruit.lower() for fruit in fruits]
+fruits = ['orange', 'acai', 'grape']
+fruits = [fruit.lower() for fruit in fruits] 
 
-#Variables
+
+def variants(myFruit):
+  pluralfruits = []
+  pluralfruits.append(myFruit[:-1] + "ies")
+  pluralfruits.append(myFruit + "s")
+  pluralfruits.append(myFruit + "es")
+  pluralfruits.append(myFruit[:-3] + "y")
+  pluralfruits.append(myFruit[:-1])
+  pluralfruits.append(myFruit[:-2])
+  return(pluralfruits)
+
+
+def compareFruits(currentFruit, nextFruit, userInput):
+  #print("The input provided was: " + userInput)
+  #print("Comparing " + userInput + " to " + currentFruit)
+  if (userInput == currentFruit):
+    return currentFruit
+  
+  #print("Comparing " + userInput + " to " + nextFruit)
+  if (userInput == nextFruit):
+    return nextFruit
+
+  for fruit in variants(currentFruit):
+    #print("Comparing " + userInput + " to " + fruit)
+    if(fruit == userInput):
+      return userInput
+
+  for fruit in variants(nextFruit):
+    #print("Comparing " + userInput + " to " + fruit)
+    if(fruit == userInput):
+      return userInput
+
+  else:
+    #print("Unable to match")
+    raise Exception("WrongFruit!")
+    #exit()
+
 decided = False
-favorite = fruits[0]
-suffixes = ["s", "ies", "es", "y", "o"]
+favorite = fruits[0] # we assume the first fruit as a favorite
 
-#Function that asks questions and allows input. It figures out your favorite fruit
-def processes(favorite):
-        for fruit in range(len(fruits)):
-
-                #Asks the question if the list hasn't been completely covered
-                if (fruit < len(fruits)-1):
-                        favorite = str(input("Do you prefer " + favorite + " or " + fruits[fruit+1] + "?"))
-                #Reveals your favorite fruit if the list has been completely covered
-                else:
-                        decided = True
-                        print("Those are all the choices! Your favorite fruit is " + favorite)
-                        return decided
-
-                #Code that makes plurality irrelevant
-                if (favorite.endswith(suffixes[3]) is True):
-                        print("path1")
-                        favorite = favorite[:-1] + suffixes[1]
-                if (favorite.endswith(suffixes[4]) is True):
-                        print("path2")
-                        favorite = favorite.replace(favorite, favorite + suffixes[2])
-                if (favorite.endswith(suffixes[0]) is False):
-                        print("path3")
-                        favorite = favorite.replace(favorite, favorite + suffixes[0])
-
-#Sets decided equal to the returned value, which is "decided?"
-decided = processes(favorite)
-
-#While Loops that determines if the function runs or not
 while (decided is False):
-        processes(favorite)
-while (decided is True):
-        break
+  for fruit in range(len(fruits)):
+      
+    # We want to make sure we don't exceed the length of the list!
+    if (fruit < (len(fruits)-1)):
+
+      while True:
+        try:
+          answer = input("Do you prefer " + favorite + " or " +fruits[fruit+1] + "? ").lower()
+          favorite = compareFruits(favorite, fruits[fruit+1], answer)
+          break
+        except:
+          print("Not a valid selection!")
+          #exit()
+
+      print(favorite)
+    else:
+      decided = True
+      print("Those are all the choices! Your favorite is " + favorite)        
+
