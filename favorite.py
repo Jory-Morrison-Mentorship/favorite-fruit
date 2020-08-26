@@ -81,13 +81,13 @@ class SortFruits():
     fruits = [fruit.lower() for fruit in fruits]
     decided = False
     favorite = fruits[0] # we assume the first fruit as a favorite
-  
+
     while (decided is False):
       for fruit in range(len(fruits)):
-  
+
         # We want to make sure we don't exceed the length of the list!
         if (fruit < (len(fruits)-1)):
-  
+
           while True:
             try:
               answer = input("Do you prefer " + favorite + " or "   +fruits[fruit+1] + "? ").lower()
@@ -96,7 +96,7 @@ class SortFruits():
             except:
               print("Not a valid selection!")
               #exit()
-  
+
         else:
           decided = True
           print("Those are all the choices! Your favorite is " +   favorite)
