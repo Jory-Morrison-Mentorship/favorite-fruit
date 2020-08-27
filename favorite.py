@@ -12,16 +12,31 @@ class FruitSortTests(unittest.TestCase):
 
 #Test1
   def test_compareFruits_1(self):
-    self.assertEqual(SortFruits.compareFruits("orange", "apple", "oranges"), "orange")
+    self.assertEqual(SortFruits.compareFruits("orange", "acai", "oranges"), "orange")
 
-#Test3
+#Test2
   def test_compareFruits_2(self):
-    self.assertEqual(SortFruits.compareFruits("orange", "apple", "apples"), "apple")
+    self.assertEqual(SortFruits.compareFruits("orange", "acai", "acais"), "acai")
+#Test3
+  def test_compareFruits_3(self):
+    self.assertNotEqual(SortFruits.compareFruits("orange", "acai", "acais"), "acais")
+
+#Test4 
+#This function finds out if "orange" is in the pluralfruits list
+  def test_variants_1(self):
+    boolean = True
+#This runs if "orange" is in pluralfruits
+    if "orange" in SortFruits.variants("oranges"):
+      boolean = True
+      self.assertTrue(blah)
+#This runs if "orange" is not in pluralfruits
+    else:
+      boolean = False
+      self.assertFalse(blah)
 
 #AttemptedTest3
   #def test_compareFruits_3(self):
   #  self.assertRaises(SortFruits.compareFruits("orange", "apple", "appleeees"), (TypeError, NameError, SyntaxError, IndentationError, ValueError))
-
 
   @unittest.skip("skipping")
   def test_compareFruits_7(self):
@@ -91,7 +106,7 @@ class SortFruits():
           while True:
             try:
               answer = input("Do you prefer " + favorite + " or "   +fruits[fruit+1] + "? ").lower()
-              favorite = SortFruits.compareFruits(favorite, fruits[fruit+1],   answer)
+              favorite = SortFruits.compareFruits(favorite, fruits[fruit+1], answer)
               break
             except:
               print("Not a valid selection!")
@@ -106,3 +121,4 @@ class SortFruits():
 if __name__ == "__main__":
     unittest.main(exit=False) # this runs our tests
     SortFruits.run() # this runs our routine, which I have encapsulated in a "run" method.
+
