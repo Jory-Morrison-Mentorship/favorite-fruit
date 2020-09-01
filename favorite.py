@@ -24,15 +24,10 @@ class FruitSortTests(unittest.TestCase):
 #Test4 
 #This function finds out if "orange" is in the pluralfruits list
   def test_variants_1(self):
-    boolean = True
 #This runs if "orange" is in pluralfruits
     if "orange" in SortFruits.variants("oranges"):
       boolean = True
-      self.assertTrue(blah)
-#This runs if "orange" is not in pluralfruits
-    else:
-      boolean = False
-      self.assertFalse(blah)
+      self.assertTrue(boolean)
 
 #AttemptedTest3
   #def test_compareFruits_3(self):
